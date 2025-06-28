@@ -96,9 +96,30 @@ Key deployment considerations:
 - Environment variables must include `DATABASE_URL`
 - The application serves both API routes and static frontend files
 
-## Changelog
-- June 28, 2025. Initial setup
+## Deployment
+
+The system is configured for multiple deployment options:
+
+### Vercel + Supabase (Recommended - Free)
+- Frontend deployed on Vercel
+- PostgreSQL database on Supabase
+- Complete setup instructions in `DEPLOY.md`
+- SSL and custom domain support included
+
+### Other Options
+- Railway ($5 monthly credit)
+- Render (free tier with limitations)
+- Fly.io (generous free tier)
+
+## Recent Changes
+- June 28, 2025: Sistema completo de ovitrampas implementado
+- Added multi-municipal parametrized system
+- Integrated Ministry of Health bulletin format
+- Added export capabilities for PDF/Word
+- Configured for Vercel + Supabase deployment
+- Fixed CSS compilation errors and DOM nesting issues
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Target deployment: Vercel + Supabase (free tier)
