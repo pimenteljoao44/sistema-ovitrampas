@@ -1,19 +1,17 @@
 {
   "version": 2,
+  "functions": {
+    "server/index.ts": {
+      "runtime": "@vercel/node@3.0.7"
+    }
+  },
   "builds": [
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["server/**", "shared/**"]
-      }
-    },
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/public",
-        "outputDirectory": "dist/public"
+        "buildCommand": "npm run build",
+        "outputDirectory": "dist"
       }
     }
   ],
@@ -23,15 +21,18 @@
       "dest": "/server/index.ts"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/dist/public/assets/$1"
+      "src": "/(.*)",
+      "dest": "/client/dist/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/server/index.ts"
     },
     {
-      "src": "/(.*)",
-      "dest": "/dist/public/$1",
-      "headers": {
-        "Cache-Control": "s-maxage=3600, stale-while-revalidate"
-      }
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html"
     }
   ]
 }
