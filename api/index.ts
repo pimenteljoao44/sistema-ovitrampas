@@ -1,4 +1,12 @@
 // Vercel serverless function entry point
-import app from '../server/index.js';
+import express from 'express';
+import { registerRoutes } from '../server/routes.js';
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Register API routes
+await registerRoutes(app);
 
 export default app;
